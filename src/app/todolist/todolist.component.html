@@ -1,0 +1,16 @@
+<div *ngIf="!isEditMode">
+  <h3>Neues Todo:</h3>
+  <input type="text" [(ngModel)]="todoText">
+  <button (click)="addTodo()">OK</button>
+</div>
+<div *ngIf="isEditMode">
+  <h3>Todo bearbeiten:</h3>
+  <input type="text" [(ngModel)]="todoText">
+  <button (click)="updateTodo()">OK</button>
+</div>
+<ul>
+  <li *ngFor="let todo of todos; let i = index">
+    <span (click)="editTodo(i)">{{todo}}</span>
+    <button (click)="removeTodo(i)">x</button>
+  </li>
+</ul>
