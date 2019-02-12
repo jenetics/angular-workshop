@@ -1,0 +1,45 @@
+<h1>MyMovieList</h1>
+<div>
+    <h3>Neuer Film:</h3>
+    Name: 
+    <input type="text" [(ngModel)]="movieName">
+    Kategorie: 
+    <select 
+      name="categories" 
+      [(ngModel)]="movieCategory" 
+      id="movieCategory" required
+    >
+        <option 
+          *ngFor="let cat of movieCategories" 
+          [value]="cat"
+        >
+          {{cat}}
+        </option>
+      </select> 
+    <button 
+      *ngIf="selectedMovieIndex === -1" 
+      (click)="addMovie()"
+    >
+      OK
+    </button>
+    <button 
+      *ngIf="selectedMovieIndex != -1" 
+      (click)="updateMovie()"
+    >
+      Update
+    </button>    
+</div>
+<ul>
+    <li *ngFor="let movie of movies; let i = index">
+      <span 
+        (click)="editMovie(i)" 
+        [ngClass]="{ cssWatched: movies[i].watched }"
+      >
+        {{movie.name}} ({{movie.category}})
+      </span>
+      
+      <input type="checkbox" [(ngModel)]="movies[i].watched">
+      <button (click)="removeMovie(i)">x</button>
+    </li>
+</ul>
+

@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodolistComponent } from './todolist/todolist.component';
+import { AutoInputWidthDirective } from './auto-input-width.directive';
+import { MovieListComponent } from './movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodolistComponent
+    TodolistComponent,
+    AutoInputWidthDirective,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
