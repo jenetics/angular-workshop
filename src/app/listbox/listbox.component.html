@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let item of items; let i = index"
+      [ngClass]="isActive(i)"
+    >
+      <span (click)="editItem(i)">{{item}}</span>&nbsp;
+      <button (click)="removeItem(i)">x</button>
+    </li>
+</ul>

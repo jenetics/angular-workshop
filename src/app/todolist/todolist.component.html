@@ -12,11 +12,11 @@
   >
   <button (click)="updateTodo()">OK</button>
 </div>
-<ul>
-  <li *ngFor="let todo of todos; let i = index"
-    [ngClass]="{ cssGanzSchlecht: i === updateTodoIndex }"
-  >
-    <span (click)="editTodo(i)">{{todo}}</span>&nbsp;
-    <button (click)="removeTodo(i)">x</button>
-  </li>
-</ul>
+<app-listbox 
+  [items]="todos"
+  [editItemIndex]="updateTodoIndex"
+  (editItemClick)="editTodo($event)"
+  (removeItemClick)="removeTodo($event)"
+></app-listbox>
+
+{{joke}}

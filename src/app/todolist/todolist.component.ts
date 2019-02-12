@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChucknorrisService } from '../chucknorris.service';
 
 @Component({
   selector: 'app-todolist',
@@ -12,16 +13,24 @@ export class TodolistComponent implements OnInit {
   isEditMode = false;
   updateTodoIndex = -1;
 
-  constructor() {}
+  joke = '';
+
+  constructor(private chuck: ChucknorrisService) {
+  }
+
   ngOnInit() {}
 
   addTodo() {
     this.todos.push(this.todoText);
     this.todoText = '';
+    this.joke = '';
   }
 
   removeTodo(index: number) {
     this.todos.splice(index, 1);
+    this.chuck.getJoke().subscribe(joke => {
+      this.joke = joke.value;
+    });
   }
 
   editTodo(index: number) {
@@ -35,6 +44,7 @@ export class TodolistComponent implements OnInit {
     this.isEditMode = false;
     this.updateTodoIndex = -1;
     this.todoText = '';
+    this.joke = '';
   }
 
 }
